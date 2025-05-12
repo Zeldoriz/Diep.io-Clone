@@ -13,7 +13,7 @@ const usePlayerPosition = (
   const keys = useRef<{ [key: string]: boolean }>({});
   const velocity = useRef({ x: 0, y: 0 });
   const friction = 0.97;
-  const playerAccel = 0.3;
+  const playerAccel = 0.2;
 
   // Position Update
   useEffect(() => {

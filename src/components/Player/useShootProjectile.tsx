@@ -1,4 +1,4 @@
-import { useState, useEffect, type RefObject } from 'react';
+import { useEffect, type RefObject } from 'react';
 import type PlayerProjType from '../../types/PlayerProjType';
 
 interface useShootProjectileProps {
@@ -10,7 +10,6 @@ interface useShootProjectileProps {
 }
 
 const useShootProjectile = ({ playerProj, position }: useShootProjectileProps) => {
-  const [, forceUpdate] = useState(0);
   const projSpeed = 7;
 
   useEffect(() => {
@@ -19,13 +18,11 @@ const useShootProjectile = ({ playerProj, position }: useShootProjectileProps) =
       const vx = Math.cos(angle) * projSpeed;
       const vy = Math.sin(angle) * projSpeed;
 
-      playerProj.current.push({ id: Date.now(), x: position.x, y: position.y, vx, vy });
-      forceUpdate((prev) => prev + 1);
+      playerProj.current.push({ id: Date.now(), x: position.x, y: position.y, vx, vy, damage: 50 });
     };
 
     window.addEventListener('mousedown', handleMouseDown);
     return () => window.removeEventListener('mousedown', handleMouseDown);
   }, [position, playerProj]);
 };
-
 export default useShootProjectile;

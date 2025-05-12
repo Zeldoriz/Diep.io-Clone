@@ -30,7 +30,7 @@ const usePlayerRotation = (
       cancelAnimationFrame(frame);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [position, setRotation]);
+  });
 };
 
 export default usePlayerRotation;
